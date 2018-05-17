@@ -14,9 +14,11 @@ namespace Movieapp
 
         public double Rating { get; set; }
 
+        public string[] ActorNames { get; private set; }
+
         public Movie()
         {
-
+            ActorNames = new string[3];
         }
 
         public Movie(string movieName, DateTime realeaseDate, double rating)
