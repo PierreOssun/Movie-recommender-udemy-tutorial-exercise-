@@ -14,11 +14,11 @@ namespace Movieapp
 
         public double Rating { get; set; }
 
-        public string[] ActorNames { get; private set; }
+        public List<string> ActorNames { get; private set; }
 
         public Movie()
         {
-            ActorNames = new string[3];
+            ActorNames = new List<string>();
         }
 
         public Movie(string movieName, DateTime realeaseDate, double rating)
@@ -26,6 +26,22 @@ namespace Movieapp
             MovieName = movieName;
             ReleaseDate = realeaseDate;
             Rating = rating;
+            ActorNames = new List<string>();
+        }
+
+        public void AddActor(string actorName)
+        {
+            ActorNames.Add(actorName);
+        }
+
+        public void AddActor(List<string> actorNames)
+        {
+            ActorNames.AddRange(actorNames);
+        }
+
+        public int CountActors()
+        {
+            return ActorNames.Count;
         }
     }
 }

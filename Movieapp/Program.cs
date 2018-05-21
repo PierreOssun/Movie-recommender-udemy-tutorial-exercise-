@@ -10,20 +10,40 @@ namespace Movieapp
     {
         static void Main(string[] args)
         {
-            Movie movie1 = new Movie
+            try
             {
-                MovieName = "Captain America - Civil War",
-                ReleaseDate = new DateTime(2016, 4, 28),
-                Rating = 7.9
-            };
-            movie1.ActorNames[0] = "Chris Evans";
-            movie1.ActorNames[1] = "Robert Downe";
+                var movie1 = new Movie
+                {
+                    MovieName = "Captain America - Civil War",
+                    ReleaseDate = new DateTime(2016, 4, 28),
+                    Rating = 7.9
+                };
+                movie1.AddActor("Chris Evans");
+                movie1.AddActor("Jennifer Lawrence");
+                movie1.AddActor("Cilian Murphy");
 
-            Console.WriteLine("{0} is realease on {1:dd/MM/yyyy} with rating is {2}", movie1.MovieName, movie1.ReleaseDate, movie1.Rating);
-            Console.WriteLine("Actor Names : {0}, {1}, {2}", movie1.ActorNames[0], movie1.ActorNames[1], movie1.ActorNames[2]);
+
+                //movie1.ActorNames.ForEach(name => Console.WriteLine(name));
+                //Console.WriteLine(movie1.CountActors());
+                Console.WriteLine(movie1.GetType());
+            }
+            catch (NullReferenceException)
+            {
+                Console.WriteLine("movie1's ActorNames not instantiated");
+            }
 
             Movie movie2 = new Movie("The Avengers", new DateTime(2012, 4, 28), 8.1);
-            Console.WriteLine("{0} is realease on {1:dd/MM/yyyyB} with rating is {2}", movie2.MovieName, movie2.ReleaseDate, movie2.Rating);
+            List<string> actorNamesList = new List<string> { "La Chteu", "Le toutoune", "Francois" };
+            movie2.AddActor(actorNamesList);
+            movie2.ActorNames.ForEach(name => Console.WriteLine(name));
+            Console.WriteLine(movie2.CountActors());
+            string[] ActorNames = new string[] { "lala", "lilili", "lololo" };
+
+            foreach (var d in ActorNames)
+            {
+                Console.WriteLine(d);
+            }
+
         }
     }
 }
