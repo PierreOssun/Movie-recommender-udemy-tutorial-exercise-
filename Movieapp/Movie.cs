@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace Movieapp
 {
-    internal class Movie
+    public class Movie
     {
         public string MovieName { get; set; }
 
         public DateTime ReleaseDate { get; set; }
 
-        public double Rating { get; set; }
+        public double IMDbRating { get; set; }
+
+        public string Genre { get; set;  }
 
         public List<string> ActorNames { get; private set; }
 
@@ -25,7 +27,7 @@ namespace Movieapp
         {
             MovieName = movieName;
             ReleaseDate = realeaseDate;
-            Rating = rating;
+            IMDbRating = rating;
             ActorNames = new List<string>();
         }
 

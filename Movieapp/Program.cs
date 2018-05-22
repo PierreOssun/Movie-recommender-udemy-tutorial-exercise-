@@ -10,40 +10,18 @@ namespace Movieapp
     {
         static void Main(string[] args)
         {
-            try
+            Console.WriteLine("Welcome to Movie Recommander !");
+            bool result = MovieRecommender.ImportExcelMovieFile();
+            if(result)
             {
-                var movie1 = new Movie
-                {
-                    MovieName = "Captain America - Civil War",
-                    ReleaseDate = new DateTime(2016, 4, 28),
-                    Rating = 7.9
-                };
-                movie1.AddActor("Chris Evans");
-                movie1.AddActor("Jennifer Lawrence");
-                movie1.AddActor("Cilian Murphy");
-
-
-                //movie1.ActorNames.ForEach(name => Console.WriteLine(name));
-                //Console.WriteLine(movie1.CountActors());
-                Console.WriteLine(movie1.GetType());
+                Console.WriteLine($"We have {MovieRecommender.MostPopularMovies2017.Count} movies in total.");
+                Console.WriteLine("Your commands: a - Action, c - Comedy, r - Romance, l - List recommended movies, e - Exit program");
+                MovieRecommender.ProcessUserInput();
             }
-            catch (NullReferenceException)
+            else
             {
-                Console.WriteLine("movie1's ActorNames not instantiated");
+                Console.WriteLine("There is a problem importing movies data");
             }
-
-            Movie movie2 = new Movie("The Avengers", new DateTime(2012, 4, 28), 8.1);
-            List<string> actorNamesList = new List<string> { "La Chteu", "Le toutoune", "Francois" };
-            movie2.AddActor(actorNamesList);
-            movie2.ActorNames.ForEach(name => Console.WriteLine(name));
-            Console.WriteLine(movie2.CountActors());
-            string[] ActorNames = new string[] { "lala", "lilili", "lololo" };
-
-            foreach (var d in ActorNames)
-            {
-                Console.WriteLine(d);
-            }
-
         }
     }
 }
